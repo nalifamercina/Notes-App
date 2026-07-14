@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "change-this-secret-key-before-production")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///notes.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+ADMIN_EMAIL = "nalifamercina42@gmail.com"
 
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
@@ -182,6 +183,18 @@ def delete_note(note_id):
     db.session.commit()
     flash("Note deleted.", "success")
     return redirect(url_for("notes"))
+
+@app.route("/admin/users")
+@login_required
+def admin_users():
+    print("Logged in user:", current_user.email)
+    # Only the admin email can access this page
+    if current_user.email != ADMIN_EMAIL:
+
+        return "❌ Access Denied", 403
+
+    users = User.query.all()
+    return render_template("admin_users.html", users=users)
 
 
 with app.app_context():
