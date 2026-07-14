@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit note' if note else 'New note' }} | My Notes{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-lg-8"><div class="d-flex justify-content-between align-items-center mb-3"><h1 class="h2 mb-0">{{ 'Edit note' if note else 'New note' }}</h1><a href="{{ url_for('notes') }}" class="btn btn-outline-secondary">Back</a></div><div class="card shadow-sm"><div class="card-body p-4"><form method="post"><div class="mb-3"><label class="form-label">Title</label><input class="form-control" name="title" value="{{ note.title if note else '' }}" maxlength="200" required autofocus></div><div class="mb-3"><label class="form-label">Content</label><textarea class="form-control" name="content" rows="12" required>{{ note.content if note else '' }}</textarea></div><button class="btn btn-primary">{{ 'Save changes' if note else 'Create note' }}</button></form></div></div></div></div>
+{% endblock %}

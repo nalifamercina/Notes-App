@@ -1,0 +1,5 @@
+body { min-height: 100vh; }
+.card { border: 0; }
+.note-preview { white-space: pre-line; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.note-card { transition: transform .15s ease, box-shadow .15s ease; }
+.note-card:hover { transform: translateY(-3px); }

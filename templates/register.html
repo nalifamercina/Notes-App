@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Register | My Notes{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-md-7 col-lg-6">
+  <div class="card shadow-sm"><div class="card-body p-4">
+    <h1 class="h3 mb-4">Create your account</h1>
+    <form method="post">
+      <div class="mb-3"><label class="form-label">Username</label><input class="form-control" name="username" required maxlength="80"></div>
+      <div class="mb-3"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required maxlength="120"></div>
+      <div class="mb-3"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required minlength="8"></div>
+      <div class="mb-3"><label class="form-label">Confirm password</label><input class="form-control" type="password" name="confirm_password" required minlength="8"></div>
+      <button class="btn btn-primary w-100">Create account</button>
+    </form>
+    <p class="text-center small mt-3 mb-0">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+  </div></div>
+</div></div>
+{% endblock %}
